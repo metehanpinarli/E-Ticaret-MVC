@@ -1,0 +1,26 @@
+﻿@model E_Ticaret_4Son.Models.Kategoriler
+
+@{
+    ViewBag.Title = "Detaylar";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>Kategoriler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KategoriAdı)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KategoriAdı)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.KategoriID }, new { @class = "btn btn-info" })
+    @Html.ActionLink("Listeye Dön", "Index", "", new { @class = "btn btn-warning" })
+</p>

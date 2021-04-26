@@ -1,0 +1,60 @@
+﻿@model IEnumerable<E_Ticaret_4Son.Models.Urunler>
+
+@{
+    ViewBag.Title = "Ürünler";
+}
+<div class="jumbotron">
+
+    <h2>@ViewBag.Title</h2>
+</div>
+
+<p>
+    @Html.ActionLink("Yeni Ürün Ekle", "Create", "", new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Ürün Adı
+            @*//   @Html.DisplayNameFor(model => model.UrunAdı)*@
+        </th>
+        <th>
+            Ürün Resmi
+            @*@Html.DisplayNameFor(model => model.UrunAciklamasi)*@
+        </th>
+        <th>
+            Ürün Fiyatı
+            @*@Html.DisplayNameFor(model => model.UrunFiyati)*@
+        </th>
+        <th>
+            Kategori Adı
+            @*@Html.DisplayNameFor(model => model.Kategoriler.KategoriAdı)*@
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrunAdı)
+            </td>
+            <td>
+                <img src="~/İmage/@(item.UrunID).jpg" width="100" />
+            </td>
+            <td>
+                @item.UrunFiyati.ToString("0,0.") TL
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kategoriler.KategoriAdı)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.UrunID }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Detaylar", "Details", new { id = item.UrunID }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Sil", "Delete", new { id = item.UrunID }, new { @class = "btn btn-danger" })
+
+            </td>
+        </tr>
+    }
+
+</table>
+

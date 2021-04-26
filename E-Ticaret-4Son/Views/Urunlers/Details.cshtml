@@ -1,0 +1,66 @@
+﻿@model E_Ticaret_4Son.Models.Urunler
+
+@{
+    ViewBag.Title = "Detaylar";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>Urunler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Ürün Adı
+            @*@Html.DisplayNameFor(model => model.UrunAdı)*@
+        </dt>
+
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunAdı)
+        </dd>
+
+        <br />
+        <dt>
+            Ürün Açıklaması
+            @*@Html.DisplayNameFor(model => model.UrunAciklamasi)*@
+        </dt>
+
+        <dd>
+            @MvcHtmlString.Create(Model.UrunAciklamasi)
+        </dd>
+        <br />
+        <dt>
+            Ürün Fiyatı
+            @*@Html.DisplayNameFor(model => model.UrunFiyati)*@
+        </dt>
+
+        <dd>
+            @Model.UrunFiyati.ToString("0,0.") TL
+
+        </dd>
+        <br />
+        <dt>
+            Kategori Adı
+            @*@Html.DisplayNameFor(model => model.Kategoriler.KategoriAdı)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategoriler.KategoriAdı)
+        </dd>
+        <br />
+        <dt>
+            Ürün Resmi
+            @*@Html.DisplayNameFor(model => model.Kategoriler.KategoriAdı)*@
+        </dt>
+
+        <dd>
+            <img src="~/İmage/@(Model.UrunID).jpg" width="100" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.UrunID }, new { @class = "btn btn-info" })
+    @Html.ActionLink("Listeye Dön", "Index", "", new { @class = "btn btn-warning" })
+</p>

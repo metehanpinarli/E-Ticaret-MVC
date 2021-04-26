@@ -1,0 +1,65 @@
+﻿@model E_Ticaret_4Son.Models.Urunler
+
+@{
+    ViewBag.Title = "Sil";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Bunu Silmek İstediğine Eminmisin?</h3>
+<div>
+    <h4>Urunler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Ürün Adı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunAdı)
+        </dd>
+
+        <dt>
+            Ürün Açıklaması
+        </dt>
+
+        <dd>
+            @MvcHtmlString.Create(Model.UrunAciklamasi)
+        </dd>
+
+        <dt>
+            Ürün Fiyatı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunFiyati)
+        </dd>
+
+        <dt>
+            Kategori Adı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategoriler.KategoriAdı)
+        </dd>
+
+        <dt>
+            Ürün Resmi
+        </dt>
+
+        <dd>
+            <img src="~/İmage/@(Model.UrunID).jpg" width="100" />
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Listeye Dön", "Index", "", new { @class = "btn btn-warning" })
+        </div>
+    }
+</div>

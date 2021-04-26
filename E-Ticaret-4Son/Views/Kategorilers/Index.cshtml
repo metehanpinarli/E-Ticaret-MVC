@@ -1,0 +1,34 @@
+﻿@model IEnumerable<E_Ticaret_4Son.Models.Kategoriler>
+
+@{
+    ViewBag.Title = "Kategoriler";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kategori Ekle", "Create", "", new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KategoriAdı)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KategoriAdı)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.KategoriID }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Detaylar", "Details", new { id = item.KategoriID }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Sil", "Delete", new { id = item.KategoriID }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

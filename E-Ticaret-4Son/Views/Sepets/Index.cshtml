@@ -1,0 +1,57 @@
+﻿@model IEnumerable<E_Ticaret_4Son.Models.Sepet>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="jumbotron">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Ürün Adı
+        </th>
+        <th>
+            Adet
+        </th>
+        <th>
+            Toplam Tutar
+        </th>
+        <th>
+
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Urunler.UrunAdı)
+            </td>
+            <td>
+                <form action="/Sepets/SepeteGuncelle">
+                    <input type="number" name="adet" id="adet" value="@item.Adet" style="width:50px;" min="1" max="99" />
+                    <input type="hidden" name="id" id="id" value="@item.SepetID" />
+                    <input type="submit" id="gonder" value="Güncelle" />
+                </form>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToplamTutar) TL
+            </td>
+            <td>
+            </td>
+            <td>
+                @Html.ActionLink("sil", "Sil", new { id = item.SepetID })
+            </td>
+        </tr>
+    }
+    <tr>
+        <th>TOPLAM</th>
+        <th>@Model.Sum(a=>a.Adet)</th>
+        <th>@Model.Sum(t=>t.ToplamTutar) TL</th>
+        <th></th>
+    </tr>
+</table>

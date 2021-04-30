@@ -50,13 +50,13 @@
                     <i class="fa fa-star fa-2x text-primary"></i>
                     <i class="fa fa-star fa-2x text-muted"></i>
                     <span class="fa fa-2x"><h5>(100) Oy</h5></span>
-                    <a >109 Kişi Satın Aldı</a>
+                    <a>109 Kişi Satın Aldı</a>
                 </h2>
                 <hr />
                 <h3 class="price-container">
                     @Model.UrunFiyati.ToString("0,0.")TL
                 </h3>
-             
+
                 <hr />
                 <div class="description description-tabs">
                     <ul id="myTab" class="nav nav-pills">
@@ -67,10 +67,10 @@
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade active in" id="specifications">
                             <br />
-                            <dl class="active" >
+                            <dl class="active">
                                 <dt>Burada</dt>
                                 <dd>Ürünün Kısa Özellikleri Yazıyor Olacak</dd>
-                                
+
                             </dl>
                         </div>
                         <div class="tab-pane fade" id="reviews">
@@ -104,7 +104,7 @@
                                                     <i class="fa fa-star fa-2x text-muted"></i>
                                                 </span>
                                             </a>
-                                            Bu harika bir ürün dostum sadece biraz pahalı 
+                                            Bu harika bir ürün dostum sadece biraz pahalı
                                         </span>
                                         <ul class="list-inline font-xs">
                                             <li>
@@ -148,22 +148,27 @@
                 <hr />
                 <div class="row">
                     <div class="col-sm-12 col-md-10 col-lg-6">
+                        <form action="~/Sepets/SepeteEkle">
+                            <input type="number" name="adet" id="adet" value="1" max="99" />
+                            <input type="hidden"value="@Model.UrunID"name="id"id="id"/>
+                           <input type="submit"id="gonder"value="Sepete Ekle" class="btn btn-warning btn-lg"/>
+                        </form>
                         <a href="javascript:void(0);" class="btn btn-success btn-lg">Satın Al</a>
-                        <a href="javascript:void(0);" class="btn btn-warning btn-lg">Sepete Ekle</a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6">
                         <div class="btn-group pull-right">
                             <button class="btn btn-white btn-default"><i class="fa fa-star"></i> Beğenilenlere Ekle</button>
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            @MvcHtmlString.Create(Model.UrunAciklamasi)
+        </div>
     </div>
     <!-- end product -->
-    <div class="row">
-        @MvcHtmlString.Create(Model.UrunAciklamasi)
-    </div>
+
 </div>
 

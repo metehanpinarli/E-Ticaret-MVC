@@ -39,19 +39,20 @@
                 </form>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ToplamTutar) TL
+                @item.ToplamTutar.ToString("0,0.") TL
+                @*@Html.DisplayFor(modelItem => item.ToplamTutar) TL*@
             </td>
             <td>
             </td>
             <td>
-                @Html.ActionLink("sil", "Sil", new { id = item.SepetID })
+                @Html.ActionLink("sil", "Sil", new { id = item.SepetID }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }
     <tr>
         <th>TOPLAM</th>
         <th>@Model.Sum(a=>a.Adet)</th>
-        <th>@Model.Sum(t=>t.ToplamTutar) TL</th>
+        <th>@Model.Sum(t=>t.ToplamTutar) TL</th>       
         <th></th>
     </tr>
 </table>

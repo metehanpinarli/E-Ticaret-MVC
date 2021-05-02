@@ -39,6 +39,8 @@ namespace E_Ticaret_4Son.Controllers
                     Adet = adet ?? 1,
                     ToplamTutar = (adet ?? 1) * Urun.UrunFiyati
                 };
+                db.Sepet.Add(YeniUrun);
+                db.SaveChanges();
 
             }
             else

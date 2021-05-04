@@ -522,6 +522,8 @@
     <Content Include="Content\fonts\material-icons\preview.html" />
     <Content Include="Content\fonts\roboto\font-min.css" />
     <Content Include="Content\fonts\roboto\font.css" />
+    <Content Include="Content\images\0735ed12dcf6437a9f0b8936797561e1.png" />
+    <Content Include="Content\images\Adsız tasarım %285%29.png" />
     <Content Include="Content\images\avatars\avatar1.jpg" />
     <Content Include="Content\images\avatars\avatar2.jpg" />
     <Content Include="Content\images\avatars\avatar3.jpg" />
@@ -540,6 +542,7 @@
     <Content Include="Content\images\banners\banner8.jpg" />
     <Content Include="Content\images\banners\banner9.jpg" />
     <Content Include="Content\images\banners\mecolsoft %281%29.png" />
+    <Content Include="Content\images\banners\mecolsoft %283%29.png" />
     <Content Include="Content\images\banners\slide1.jpg" />
     <Content Include="Content\images\banners\slide2.jpg" />
     <Content Include="Content\images\banners\slide3.jpg" />

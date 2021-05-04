@@ -2,14 +2,15 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+
     @*@Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")*@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Bootstrap-ecommerce by Vosidiy M.">
-
-    <title>Mecolsoft-Ticaret</title>
+    
+    <title>@ViewBag.Title - Mecolsoft-Ticaret</title>
 
     <!-- jQuery -->
     <script src="~/Content/js/jquery-2.0.0.min.js" type="text/javascript"></script>
@@ -165,7 +166,7 @@
                     <aside class="col-md-4 col-12">
                         <article class="mr-md-4">
                             <h5 class="title">İletişim</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in feugiat lorem. </p>
+                            <p>Bizimle iletişime geçmek ve sorularınızı sormak için lütfen çekinmeyiniz </p>
                             <ul class="list-icon">
                                 <li> <i class="icon fa fa-map-marker"> </i>İstanbul Avrupa Yakası Beşiktaş </li>
                                 <li> <i class="icon fa fa-envelope"> </i> info@mecolsoft.com</li>
@@ -178,7 +179,7 @@
                         <h5 class="title">Bilgi</h5>
                         <ul class="list-unstyled">
                             <li> <a href="#">Hakkımızda</a></li>
-                            <li> <a href="#">Career</a></li>
+                            @*<li> <a href="#">Career</a></li>*@
                             <li> <a href="#">Mağzalar</a></li>
                             <li> <a href="#">Kurallar Ve Şartlar</a></li>
                             <li> <a href="#">Site Haritası</a></li>
@@ -195,7 +196,7 @@
                     </aside>
                     <aside class="col-md-4 col-12">
                         <h5 class="title">Haber Bülteni</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in feugiat lorem. </p>
+                        <p>Sİtemize eni gelen ürünler ve indirimlerden haberdar olmak için abone ol! </p>
 
                         <form class="form-inline mb-3">
                             <input type="text" placeholder="E-Posta" class="form-control" name="">
@@ -217,16 +218,15 @@
             <section class="footer-bottom border-top row">
                 <div class="col-md-6">
                     <p class="mb-0">
-                        <a href="">Terms and Conditions</a> |
-                        <a href="">Privacy</a> |
-                        <a href="">Cookies</a>
+                        <a href="">Şartlar ve koşullar</a> |
+                        <a href="">Gizlilik</a> |
+                        <a href="">Çerezler</a>
                     </p>
                 </div>
                 <div class="col-md-6 text-md-right">
                     <i class="fab fa-lg fa-cc-visa"></i>
                     @*<i class="fab fa-lg fa-cc-paypal"></i>*@
                     <i class="fab fa-lg fa-cc-mastercard"></i>
-                    <i class="fab fa-lg fa-creative-commons-nc-eu"></i>
                 </div>
             </section>
         </div><!-- //container -->

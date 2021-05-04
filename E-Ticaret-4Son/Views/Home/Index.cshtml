@@ -1,78 +1,85 @@
 ﻿@using E_Ticaret_4Son.Models;
-<link href="~/Content/KartTasarim.css" rel="stylesheet" />
 
 @{
-    ViewBag.Title = "Ana Sayfaaaaa";
+    ViewBag.Title = "Ana Sayfa";
 
     List<Kategoriler> KategoriListesi = ViewBag.KategoriListesi;
     List<Urunler> SonUrunler = ViewBag.SonUrunler;
+    List<Kategoriler> SonKategoriler = ViewBag.SonKategoriler;
 
 }
 
-<div class="jumbotron">
-    <h1>@ViewBag.Title</h1>
-</div>
+<!-- ========================= SECTION MAIN ========================= -->
+<section class="section-main bg padding-y">
+    <div class="container">
 
-<div class="row">
-    <div class="col-md-3">
-        <h2>Kategoriler</h2>
-        <ul>
-            @foreach (var item in KategoriListesi)
-            {
-                <li>@Html.ActionLink(item.KategoriAdı, "Kategori", new { id = item.KategoriID })</li>
-            }
-        </ul>
+        <div class="row">
+            <aside class="col-md-3">
+                <nav class="card">
+                    <ul class="menu-category">
 
-    </div>
 
-    <div class="col-md-9">
+                        @foreach (var item in SonKategoriler)
+                        {
+
+                            <li>@Html.ActionLink(item.KategoriAdı, "Kategori", new { id = item.KategoriID })</li>
+
+                        }
+
+                        <li class="has-submenu">
+                            <a href="#">Diğer Kategoriler</a>
+                            <ul class="submenu">
+                                @foreach (var item in KategoriListesi)
+                                {
+
+                                    <li>@Html.ActionLink(item.KategoriAdı, "Kategori", new { id = item.KategoriID })</li>
+
+                                }
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </aside> <!-- col.// -->
+            <div class="col-md-9">
+                <article class="banner-wrap">
+                    <img src="~/Content/images/banners/mecolsoft (1).png" class="w-100 rounded">
+                </article>
+            </div> <!-- col.// -->
+        </div> <!-- row.// -->
+    </div> <!-- container //  -->
+</section>
+<!-- ========================= SECTION MAIN END// ========================= -->
+<!-- ========================= SECTION  ========================= -->
+<section class="section-name padding-y-sm">
+    <div class="container">
+
+        <header class="section-heading">
+            <a href="#" class="btn btn-outline-primary float-right">Tümünü Gör</a>
+            <h3 class="section-title">En Son Ürünler</h3>
+        </header><!-- sect-heading -->
 
 
         <div class="row">
-
-
             @foreach (var item in SonUrunler)
             {
-
-
-                <div class="col-md-4">
-                    <figure class="card card-product-grid card-lg">
-                        <a href="~/Home/Urun/@item.UrunID"  class="img-wrap" data-abc="true">  <img src="~/İmage/@(item.UrunID).jpg" width="100" /> </a>
+                <div class="col-md-3">
+                    <div href="~/Home/Urun/@item.UrunID" class="card card-product-grid">
+                        <br />
+                        <a href="~/Home/Urun/@item.UrunID" class="img-wrap">  <img src="~/İmage/@(item.UrunID).jpg" /> </a>
                         <figcaption class="info-wrap">
-                            <div class="row">
+                            <a href="~/Home/Urun/@item.UrunID" class="title">
+                                <div style=" overflow: hidden;display:-webkit-box;-webkit-line-clamp:2; -webkit-box-orient: vertical;" class="entry-content"><p>@item.UrunAdı</p> </div>
 
-                                <div class="col-md-10 col-xs-12">
-                                    <a class="title" data-abc="true">
-                                        <!-- <div style=" overflow: hidden;display:-webkit-box;-webkit-line-clamp:2; -webkit-box-orient: vertical;" class="entry-content"><p></p> </div> -->
-                                        @item.UrunAdı
-                                    </a>
-                                    <span class="rated">@Html.DisplayFor(a => item.Kategoriler.KategoriAdı)</span>
-                                </div>
-
-                            </div>
+                            </a>
+                            <span class="rated">@Html.DisplayFor(a => item.Kategoriler.KategoriAdı)</span>
+                            <div class="price mt-1">@item.UrunFiyati.ToString("0,0.") TL</div> <!-- price-wrap.// -->
                         </figcaption>
-                        <div class="bottom-wrap-payment">
-                            <figcaption class="info-wrap">
-                                <div class="row">
-                                    <div class="col-md-12 col-xs-12"> <a  class="title" data-abc="true" style=" font-weight: 700;">@item.UrunFiyati.ToString("0,0.") TL</a> <span class="rated">Tüm Kartlar</span> </div>
-
-                                </div>
-                            </figcaption>
-                        </div>
-                        @*<div class="bottom-wrap">
-                            <div class="col-md-6"><a href="#" class="btn btn-primary">Satın Al</a></div>
-                            <div class="col-md-6"> @Html.ActionLink("Detaylar", "Urun", new { id = item.UrunID }, new { @class = "btn btn-warning" })</div>
-                        </div>*@
-                    </figure>
-                </div>
-
+                    </div>
+                </div> <!-- col.// -->
             }
 
-        </div>
+        </div> <!-- row.// -->
 
-    </div>
-
-
-
-</div>
-
+    </div><!-- container // -->
+</section>
+<!-- ========================= SECTION  END// ========================= -->

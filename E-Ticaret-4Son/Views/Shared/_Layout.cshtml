@@ -1,15 +1,19 @@
-﻿
+﻿@using E_Ticaret_4Son.Models;
 <!DOCTYPE HTML>
 <html>
 <head>
 
     @*@Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")*@
+    @{
+        E_TicaretDBEntities db = new E_TicaretDBEntities();
+        var kategorilist = db.Kategoriler.ToList();
+    }
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Bootstrap-ecommerce by Vosidiy M.">
-    
+
     <title>@ViewBag.Title - Mecolsoft-Ticaret</title>
 
     <!-- jQuery -->
@@ -71,7 +75,8 @@
                             <a href="/Sepets/Index" class="widget-header mr-3">
                                 <div class="icon">
                                     <i class="icon-sm rounded-circle border fa fa-shopping-cart"></i>
-                                    <span class="notify">0</span>
+                                    <span class="notify">0
+                                    </span>
                                 </div>
                             </a>
                             <a href="#" class="widget-header mr-3">
@@ -91,7 +96,7 @@
                                     <a class="dropdown-item" href="/Manage">Profil Ayarları</a>
                                     <a class="dropdown-item" href="#">Siparişlerim</a>
                                     <hr class="dropdown-divider">
-                                    <a class="dropdown-item">@Html.Partial("_LoginPartial")</a>
+                                    @Html.Partial("_LoginPartial")
                                 </div> <!--  dropdown-menu .// -->
                             </div>  <!-- widget-header .// -->
 
@@ -124,13 +129,11 @@
                             <a class="nav-link dropdown-toggle" href="http://example.com" data-toggle="dropdown">Bütün Kategoriler</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="page-category.html">Foods and Drink</a>
-                                <a class="dropdown-item" href="page-category.html">Home interior</a>
-                                <a class="dropdown-item" href="page-category.html">Computer electronics</a>
-                                <a class="dropdown-item" href="page-category.html">Clothing</a>
-                                <a class="dropdown-item" href="page-category.html">Gardening and flowers</a>
-                                <a class="dropdown-item" href="page-category.html">Hand made items</a>
-                                <a class="dropdown-item" href="page-category.html">Smartphones</a>
-                                <a class="dropdown-item" href="page-category.html">Digital products</a>
+                                @foreach (var item in kategorilist)
+                                {
+                                    @Html.ActionLink(item.KategoriAdı, "Kategori", new { id = item.KategoriID }, new { @class = "dropdown-item" })
+
+                                }
                             </div>
                         </li>
                         <li class="nav-item">@Html.ActionLink("Kategori Yönetim", "Index", "Kategorilers", "", new { @class = "nav-link" })</li>

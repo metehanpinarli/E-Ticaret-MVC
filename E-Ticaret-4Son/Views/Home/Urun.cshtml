@@ -96,8 +96,15 @@
                     </div> <!-- col.// -->
                 </div> <!-- row.// -->
                 <a href="#" class="btn  btn-primary">Şimdi satın al </a>
-                <a href="#" class="btn  btn-outline-primary"> <span class="text">Sepete ekle</span> <i class="fas fa-shopping-cart"></i>  </a>
+                <form action="~/Sepets/SepeteEkle">
+                    <input type="number" name="adet" id="adet" value="1" max="99" />
+                    <input type="hidden" value="@Model.UrunID" name="id" id="id" />
+                    <input type="submit" id="gonder" value="Sepete Ekle" class="btn btn-warning btn-lg" />
+                </form>
+
+                <a href="~/Sepets/SepeteEkle/@Model.UrunID" class="btn  btn-outline-primary"> <span class="text">Sepete ekle</span> <i class="fas fa-shopping-cart"></i>  </a>
             </article> <!-- product-info-aside .// -->
+
         </main> <!-- col.// -->
     </div> <!-- row.// -->
 </div> <!-- card.// -->
@@ -137,7 +144,8 @@
                     <li>5 years warranty for this product</li>
                 </ul>
             </aside>
-        </div>--> <!-- row.// -->
+        </div>-->
+        <!-- row.// -->
         @*<hr>*@
         <p>
             @MvcHtmlString.Create(Model.UrunAciklamasi)

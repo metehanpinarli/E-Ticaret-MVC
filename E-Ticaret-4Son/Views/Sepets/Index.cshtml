@@ -97,16 +97,16 @@
         <div class="card">
             <div class="card-body">
                 <dl class="dlist-align">
-                    <dt>Total price:</dt>
-                    <dd class="text-right">69.97 TL</dd>
+                    <dt>Toplam Tutar:</dt>
+                    <dd class="text-right">@Model.Sum(t => t.ToplamTutar).ToString("0,0.") TL</dd>
                 </dl>
                 <dl class="dlist-align">
-                    <dt>Discount:</dt>
-                    <dd class="text-right text-danger">10.00TL</dd>
+                    <dt>İndirim:</dt>
+                    <dd class="text-right text-danger">0TL</dd>
                 </dl>
                 <dl class="dlist-align">
-                    <dt>Total:</dt>
-                    <dd class="text-right text-dark b"><strong>@Model.Sum(t => t.ToplamTutar) TL</strong></dd>
+                    <dt>Toplam:</dt>
+                    <dd class="text-right text-dark b"><strong>@Model.Sum(t => t.ToplamTutar).ToString("0,0.") TL</strong></dd>
                 </dl>
                 <hr>
                 <p class="text-center mb-3">

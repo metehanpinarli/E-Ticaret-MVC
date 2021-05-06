@@ -15,7 +15,7 @@ namespace E_Ticaret_4Son.Controllers
         E_TicaretDBEntities db = new E_TicaretDBEntities();
         public ActionResult Index()
         {
-            ViewBag.KategoriListesi = db.Kategoriler.OrderByDescending(c=>c.KategoriID).ToList();
+            ViewBag.KategoriListesi = db.Kategoriler.OrderByDescending(c => c.KategoriID).ToList();
             ViewBag.SonKategoriler = db.Kategoriler.OrderByDescending(k => k.KategoriID).Skip(0).Take(7).ToList();
             ViewBag.SonUrunler = db.Urunler.OrderByDescending(u => u.UrunID).Skip(0).Take(8).ToList();
 

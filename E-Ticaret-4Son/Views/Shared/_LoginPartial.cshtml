@@ -3,20 +3,15 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Merhaba " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Çıkış Yap</a></li>
-    </ul>
+
+        <a href="javascript:document.getElementById('logoutForm').submit()" class="dropdown-item">Çıkış Yap</a>
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Kayıt Ol", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Giriş Yap", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+
+    @Html.ActionLink("Kayıt Ol", "Register", "Account", new { id = "registerLink" }, new { @class = "dropdown-item" })
+    @Html.ActionLink("Giriş Yap", "Login", "Account", new { id = "loginLink" }, new { @class = "dropdown-item" })
 }

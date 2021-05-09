@@ -26,83 +26,97 @@
         </aside>
         <main class="col-md-6 border-left">
             <article class="content-body">
-
-                <h2 class="title">@Model.UrunAdı</h2>
-
-                <div class="rating-wrap my-3">
-                    <ul class="rating-stars">
-                        <li style="width:80%" class="stars-active">
-                            <img src="../images/icons/stars-active.svg" alt="">
-                        </li>
-                        <li>
-                            <img src="../images/icons/starts-disable.svg" alt="">
-                        </li>
-                    </ul>
-                    <small class="label-rating text-muted">132 yorum</small>
-                    <small class="label-rating text-success"> <i class="fa fa-clipboard-check"></i> 154 sipariş </small>
-                </div> <!-- rating-wrap.// -->
-
-                <div class="mb-3">
-                    <var class="price h4">@Model.UrunFiyati.ToString("0,0.") TL</var>
-                    <span class="text-muted">/adet</span>
-                </div>
-
-                <p>BURADA ÜRÜN HAKKINDA KISA AÇIKLAMA YAZABİLİER (ÖNE ÇIKAN ÖZELLİKLER İSTENİR BURRAYA GELİR)</p>
-
-                <dl class="row">
-                    <dt class="col-sm-3">Model</dt>
-                    <dd class="col-sm-9">Odsy-1000</dd>
-
-                    <dt class="col-sm-3">Renk</dt>
-                    <dd class="col-sm-9">Brown</dd>
-
-                    <dt class="col-sm-3">Kargo</dt>
-                    <dd class="col-sm-9">Russia, USA, and Europe </dd>
-                </dl>
-
-                <hr>
-                <div class="row">
-                    <div class="form-group col-md flex-grow-0">
-                        <label>Adet</label>
-                        <div class="input-group mb-3 input-spinner">
-                            <div class="input-group-prepend">
-                                <button class="btn btn-light" type="button" id="button-plus"> + </button>
-                            </div>
-                            <input type="text" class="form-control" value="1">
-                            <div class="input-group-append">
-                                <button class="btn btn-light" type="button" id="button-minus"> &minus; </button>
-                            </div>
-                        </div>
-                    </div> <!-- col.// -->
-                    <div class="form-group col-md">
-                        <label>Boyut</label>
-                        <div class="mt-2">
-                            <label class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" name="select_size" checked="" class="custom-control-input">
-                                <div class="custom-control-label">Small</div>
-                            </label>
-
-                            <label class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" name="select_size" class="custom-control-input">
-                                <div class="custom-control-label">Medium</div>
-                            </label>
-
-                            <label class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" name="select_size" class="custom-control-input">
-                                <div class="custom-control-label">Large</div>
-                            </label>
-
-                        </div>
-                    </div> <!-- col.// -->
-                </div> <!-- row.// -->
-                <a href="#" class="btn  btn-primary">Şimdi satın al </a>
                 <form action="~/Sepets/SepeteEkle">
-                    <input type="number" name="adet" id="adet" value="1" max="99" />
-                    <input type="hidden" value="@Model.UrunID" name="id" id="id" />
-                    <input type="submit" id="gonder" value="Sepete Ekle" class="btn btn-warning btn-lg" />
-                </form>
 
-                <a href="~/Sepets/SepeteEkle/@Model.UrunID" class="btn  btn-outline-primary"> <span class="text">Sepete ekle</span> <i class="fas fa-shopping-cart"></i>  </a>
+                    <h2 class="title">@Model.UrunAdı</h2>
+
+                    <div class="rating-wrap my-3">
+                        <ul class="rating-stars">
+                            <li style="width:80%" class="stars-active">
+                                <img src="../images/icons/stars-active.svg" alt="">
+                            </li>
+                            <li>
+                                <img src="../images/icons/starts-disable.svg" alt="">
+                            </li>
+                        </ul>
+                        <small class="label-rating text-muted">132 yorum</small>
+                        <small class="label-rating text-success"> <i class="fa fa-clipboard-check"></i> 154 sipariş </small>
+                    </div> <!-- rating-wrap.// -->
+
+                    <div class="mb-3">
+                        <var class="price h4">@Model.UrunFiyati.ToString("0,0.") TL</var>
+                        <span class="text-muted">/adet</span>
+                    </div>
+
+                    <p>BURADA ÜRÜN HAKKINDA KISA AÇIKLAMA YAZABİLİER (ÖNE ÇIKAN ÖZELLİKLER İSTENİR BURRAYA GELİR)</p>
+
+                    <dl class="row">
+                        <dt class="col-sm-3">Model</dt>
+                        <dd class="col-sm-9">Odsy-1000</dd>
+
+                        <dt class="col-sm-3">Renk</dt>
+                        <dd class="col-sm-9">Brown</dd>
+
+                        <dt class="col-sm-3">Kargo</dt>
+                        <dd class="col-sm-9">Russia, USA, and Europe </dd>
+                    </dl>
+
+                    <hr>
+                    <div class="row">
+                        <div class="form-group col-md flex-grow-0">
+                            <label>Adet</label>
+                            <div class="input-group mb-3 input-spinner">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-light" type="button" id="button-plus" onclick="arttir()"> + </button>
+                                </div>
+                                <input type="text" name="adet" id="adet" maxlength="3" class="form-control" value="1">
+                                <input type="hidden" value="@Model.UrunID" name="id" id="id" />
+                                <div class="input-group-append">
+                                    <button class="btn btn-light" type="button" id="button-minus" onclick="azalt()"> &minus; </button>
+                                </div>
+                                <script>
+                                    function arttir() {
+
+                                        var adet = document.getElementById("adet");
+                                        adet.value = Number(adet.value) + 1;
+                                    }
+
+                                    function azalt() {
+
+                                        var adet = document.getElementById("adet");
+                                        adet.value = Number(adet.value) - 1;
+                                        adet.onc
+                                    }
+                                </script>
+                            </div>
+                        </div> <!-- col.// -->
+                        <!--<div class="form-group col-md">
+                            <label>Boyut</label>
+                            <div class="mt-2">
+                                <label class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" name="select_size" checked="" class="custom-control-input">
+                                    <div class="custom-control-label">Small</div>
+                                </label>
+
+                                <label class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" name="select_size" class="custom-control-input">
+                                    <div class="custom-control-label">Medium</div>
+                                </label>
+
+                                <label class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" name="select_size" class="custom-control-input">
+                                    <div class="custom-control-label">Large</div>
+                                </label>
+
+                            </div>
+                        </div>-->
+                        <!-- col.// -->
+                    </div> <!-- row.// -->
+                    <a href="#" class="btn  btn-primary">Şimdi satın al</a>
+                    <button id="gonder"class="btn  btn-outline-primary"> <span class="text">Sepete Ekle</span><i class="fas fa-shopping-cart"></i></button>
+
+                    @*class="btn  btn-outline-primary"> <span class="text">Sepete ekle</span> <i class="fas fa-shopping-cart"></i>  </a>*@
+                </form>
             </article> <!-- product-info-aside .// -->
 
         </main> <!-- col.// -->

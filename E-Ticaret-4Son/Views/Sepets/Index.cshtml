@@ -55,13 +55,23 @@
                             <td>
                                 <div class="price-wrap">
                                     <var class="price">@item.ToplamTutar.ToString("0,0.") TL</var>
-                                    @*<small class="text-muted"> $315.20 each </small>*@
+                                    @*<small class="text-muted"> $315.20 each </small> indirimli fiyat*@
                                 </div> <!-- price-wrap .// -->
                             </td>
                             <td class="text-right">
-                                <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>
+                                @*<a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>*@
+                                <a class="btn" id="kalp" onclick="degis()"> <i class="fa fa-heart"></i></a>
                                 @Html.ActionLink("İptal Et", "Sil", new { id = item.SepetID }, new { @class = "btn btn-danger" })
                                 @*<a href="" class="btn btn-danger"> İptal Et</a>*@
+                                <script>
+                                    var kalpp = document.getElementById("kalp");
+                                    function degis() {
+                                        kalpp.style.color = "#ff0000";
+                                        console.log("tıklandı");
+                                    }
+
+                                </script>
+
                             </td>
                         </tr>
                     }

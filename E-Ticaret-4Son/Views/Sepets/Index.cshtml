@@ -37,17 +37,14 @@
                                 </figure>
                             </td>
                             <td>
-                                <form action="/Sepets/SepeteGuncelle">
-                                    @*<input type="number" name="adet" id="adet" value="@item.Adet" />
-                                        <input type="hidden" name="id" id="id" value="@item.SepetID" />
-                                        <input type="submit" id="gonder" value="Güncelle" />*@
-                                    <select class="form-control">
-                                        <option>@item.Adet</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                <form action="/Sepets/SepeteGuncelle" method="post">
+                                    <input type="hidden" name="id" id="id" value="@item.SepetID" />
+                                    <select class="form-control" name="adet" id="adet" value="@item.Adet"onchange="this.form.submit()">
+                                        <option value="@item.Adet" selected hidden>@item.Adet</option>
+                                        <option value="1">1</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
                                     </select>
                                 </form>
                             </td>

@@ -53,6 +53,26 @@ namespace E_Ticaret_4Son.Controllers
 
             return RedirectToAction("Index");
         }
+        public ActionResult SepeteGuncelle(int? adet,int id)
+        {
+            if (id==null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            }
+            Sepet sepet = db.Sepet.Find(id);
+            if (sepet == null)
+            {
+                return HttpNotFound();
+            }
+            Urunler urun = db.Urunler.Find(sepet.RefUrunID);
+            sepet.Adet = adet ?? 1;
+            sepet.ToplamTutar = sepet.Adet * urun.UrunFiyati;
+
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
 
         protected override void Dispose(bool disposing)
         {

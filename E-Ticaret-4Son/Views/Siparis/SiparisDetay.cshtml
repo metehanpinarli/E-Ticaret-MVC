@@ -1,0 +1,49 @@
+﻿@model IEnumerable<E_Ticaret_4Son.Models.SiparisKalem>
+
+@{
+    ViewBag.Title = "Sipariş detay";
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    <table class="table">
+        <tr>
+            <th>
+                Ürün Adı
+            </th>
+            <th>
+                Ürün Fiyatı
+            </th>
+            <th>
+                Adet
+            </th>
+            <th>
+                Toplam tutar
+            </th>
+
+        </tr>
+    
+    @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Urunler.UrunAdı)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Urunler.UrunFiyati)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToplamTutar)
+        </td>
+
+ 
+    </tr>
+    }
+    
+    </table>
+</body>
+</html>

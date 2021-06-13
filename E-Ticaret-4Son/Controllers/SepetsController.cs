@@ -73,6 +73,14 @@ namespace E_Ticaret_4Son.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Sil(int id)
+        {
+            Sepet sepet = db.Sepet.Find(id);
+            db.Sepet.Remove(sepet);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
 
         protected override void Dispose(bool disposing)
         {

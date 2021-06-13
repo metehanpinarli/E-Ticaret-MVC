@@ -1,0 +1,76 @@
+﻿@model IEnumerable<E_Ticaret_4Son.Models.Siparis>
+
+@{
+    ViewBag.Title = "sipariş listesi";
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    <table class="table">
+        <tr>
+            <th>
+                Ad
+            </th>
+            <th>
+                Soyad
+            </th>
+            <th>
+                Adres
+            </th>
+            <th>
+                Telefon Numarası
+            </th>
+            <th>
+                TC Kimlik Numarası
+            </th>
+            <th>
+                Sipariş Tarihi
+            </th>
+            <th>
+                Ürün Adeti
+            </th>
+            <th>
+                Toplam Tutar
+            </th>
+            <th>
+                Sipariş Detay
+            </th>
+        </tr>
+    
+    @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soyad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TcKimlikNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tarih)
+        </td>
+        <td>
+            @item.SiparisKalem.Sum(a => a.Adet);
+        </td>
+        <td>
+            @item.SiparisKalem.Sum(a => a.ToplamTutar);
+        </td>
+        <td>
+            <a class="btn btn-primary" href="~/Siparis/SiparisDetay/@item.SiparisID">Detay</a>
+        </td>
+    </tr>
+    }
+    
+    </table>
+</body>
+</html>

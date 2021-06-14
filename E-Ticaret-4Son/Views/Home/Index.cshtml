@@ -83,14 +83,16 @@
                         <span class="topbar">
                             <a href="" class="float-right"><i class="fa fa-heart"></i></a>
                         </span>
-                        <div class="img-wrap"style="margin-bottom:5px;margin-top:5px;">
-                            <img src="~/İmage/@(item.UrunID).jpg"/>
+                        <a href="~/Home/Urun/@item.UrunID">
+                            <div class="img-wrap" style="margin-bottom:5px;margin-top:5px;">
+                                <img src="~/İmage/@(item.UrunID).jpg" />
 
-                            <a class="btn-overlay" href="~/Home/Urun/@item.UrunID"><i class="fa fa-search-plus"></i>Detaylı İncele</a>
-                        </div>
+                                <a class="btn-overlay" href="~/Home/Urun/@item.UrunID"><i class="fa fa-search-plus"></i>Detaylı İncele</a>
+                            </div>
+                        </a>
                         <figcaption class="info-wrap border-top">
-                            <a href="#" class="title"> <div style=" overflow: hidden;display:-webkit-box;-webkit-line-clamp:1; -webkit-box-orient: vertical;" class="entry-content"><p>@item.UrunAdı</p> </div></a>
-                            <small class="text-muted"style="color:blue !important">@item.Kategoriler.KategoriAdı</small>
+                            <a href="~/Home/Urun/@item.UrunID" class="title"> <div style=" overflow: hidden;display:-webkit-box;-webkit-line-clamp:1; -webkit-box-orient: vertical;" class="entry-content"><p>@item.UrunAdı</p> </div></a>
+                            <small class="text-muted" style="color:blue !important">@item.Kategoriler.KategoriAdı</small>
                             <div class="price mt-2">@item.UrunFiyati.ToString("0,0.") TL</div> <!-- price-wrap.// -->
                         </figcaption>
                     </figure> <!-- card // -->

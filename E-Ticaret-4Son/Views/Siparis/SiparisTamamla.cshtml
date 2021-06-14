@@ -1,137 +1,217 @@
 ﻿@model E_Ticaret_4Son.Models.Siparis
+@using E_Ticaret_4Son.Models;
 
 @{
     ViewBag.Title = "SiparisTamamla";
+    List<Sepet> sepeturunler = ViewBag.sepeturunler;
 }
-
-<h2>SiparisTamamla</h2>
-<form action="@ViewBag.PostURL"method="post">
+<form action="@ViewBag.PostURL" method="post">
     @Html.AntiForgeryToken()
-
     <div class="row">
-        <div class="col-md-6">
-
-            <div class="form-horizontal">
-                <h4>Siparis</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Ad, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Ad, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Ad, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Soyad, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Soyad, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Soyad, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Adres, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Adres, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Adres, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Telefon, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.TcKimlikNo, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.TcKimlikNo, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.TcKimlikNo, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-        </div>
+        <main class="col-md-8">
+            <article class="card mb-4">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">İletişim Bilgileri</h4>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label>Ad</label>
+                            <input type="text" placeholder="" class="form-control" name="Ad" id="Ad">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label>Soyad</label>
+                            <input type="text" placeholder="" class="form-control" name="Soyad" id="Soyad">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label>Telefon Numarası</label>
+                            <input type="text" value="+90" class="form-control" id="Telefon" name="Telefon">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label>Tc Kimlik No</label>
+                            <input type="number" placeholder="" class="form-control" id="TcKimlikNo" name="TcKimlikNo">
+                        </div>
+                    </div> <!-- row.// -->
+                </div> <!-- card-body.// -->
+            </article> <!-- card.// -->
 
 
-        <div class="col-md-6">
-            <div class="form-horizontal">
-                <h4>Kart bilgileri</h4>
-                <hr />
-                <div class="form-group">
-                    <label class="control-label col-md-6" for="kartisimsoyisim">Adı Soyadı</label>
-                    <div class="col-md-6">
-                        <input  autocomplete="off" name="kartisimsoyisim" type="text"maxlength="255" value="Demo Hesap"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-6" for="ad">Kredi Kartı Numarası</label>
-                    <div class="col-md-6">
-                        <input autocomplete="off" id="contact-email" name="pan" type="text" value="5571135571135575" />
-                        <input type="hidden" name="clientid" value="@ViewBag.ClientId" />
-                        <input type="hidden" name="oid" value="@ViewBag.Oid" />
-                        <input type="hidden" name="okUrl" value="@ViewBag.okURL" />
-                        <input type="hidden" name="failUrl" value="@ViewBag.failURL" />
-                        <input type="hidden" name="islemtipi" value="@ViewBag.TransActionType" />
-                        <input type="hidden" name="rnd" value="@ViewBag.RDN" />
-                        <input type="hidden" name="hash" value="@ViewBag.Hash" />
-                        <input type="hidden" name="storetype" value="@ViewBag.StoreType" />
-                        <input type="hidden" name="refreshtime" value="10" />
-                        <input type="hidden" name="lang" value="@ViewBag.Lang" />
-                        <input type="hidden" name="currency" value="949" />
-                        <input type="hidden" name="amount" value="@ViewBag.Amount" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-6" for="kartisimsoyisim">Son Kullanma Tarihi</label>
-                    <div class="col-md-6">
-                        <select class="sec" style="float:left;width:75px;" name="Ecom_Payment_Card_ExpDate_Month">
-                            <option value="01">01</option>
-                            <option value="02">2</option>
-                            <option value="03">3</option>
-                            <option value="04">4</option>
-                            <option value="05">5</option>
-                            <option value="06">6</option>
-                            <option value="07">7</option>
-                            <option value="08">8</option>
-                            <option value="09">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12" selected="selected">12</option>
-                        </select>
-                        <select class="sec" style="float:left;width:75px;" name="Ecom_Payment_Card_ExpDate_Year">
-                            <option value="21"selected="selected">21</option>
-                            <option value="22">22</option>
-                            <option value="23">23</option>
-                            <option value="24">24</option>
-                            <option value="25">25</option>
-                            <option value="26">26</option>
+            <article class="card mb-4">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Teslimat Bilgileri</h4>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label class="js-check box active">
+                                <input type="radio" name="dostavka" value="option1" checked>
+                                <h6 class="title">Standart Kargo</h6>
+                                <p class="text-muted">We will deliver by DHL Kargo</p>
+                            </label> <!-- js-check.// -->
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="js-check box">
+                                <input type="radio" name="dostavka" value="option1">
+                                <h6 class="title">Hızlı Kargo</h6>
+                                <p class="text-muted">Come to our office to somewhere </p>
+                            </label> <!-- js-check.// -->
+                        </div>
+                    </div> <!-- row.// -->
 
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-6" for="CVC">CVC</label>
-                    <div class="col-md-6">
-                        <input autocomplete="off" id="contact-phone" name="cvCode" type="text" value="123" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-6">
-                        <input type="submit" value="Ödeme Tamamla" class="btn btn-success"/>
-                        <p>
-                            Kart 3 d şifresi :a
-                        </p>
-                    </div>
-                </div>
-            </div>
 
-        </div>
-    </div>
-   
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label>İl*</label>
+                            <select name="" class="form-control">
+                                <option value="">İstanbul</option>
+                                <option value="">Ankara</option>
+                                <option value="">İzmir</option>
+                                <option value="">Bursa</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label>İlçe*</label>
+                            <input type="text" placeholder="" class="form-control">
+                        </div>
+                        <div class="form-group col-sm-8">
+                            <label>Sokak/Cadde*</label>
+                            <input type="text" placeholder="" class="form-control">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label>Bina No*</label>
+                            <input type="text" placeholder="" class="form-control">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label>Daire No*</label>
+                            <input type="text" placeholder="" class="form-control">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label>Posta  Kodu</label>
+                            <input type="text" placeholder="" class="form-control">
+                        </div>
+                    </div> <!-- row.// -->
+                </div> <!-- card-body.// -->
+            </article> <!-- card.// -->
+            <!-- ============================ COMPONENT PAYMENT  ================================= -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Ödeme Bilgileri</h4>
+                    <div class="form-group">
+                        <label for="kartisimsoyisim">Kart Üstündeki İsim</label>
+                        <input autocomplete="off" name="kartisimsoyisim" type="text" maxlength="255" value="Demo Hesap" class="form-control" />
+                    </div> <!-- form-group.// -->
+
+                    <div class="form-group">
+                        <label for="cardNumber">Kart Numarası</label>
+                        <div class="input-group">
+                            <input type="text" autocomplete="off" id="contact-email" class="form-control" name="pan" value="5571135571135575">
+                            <input type="hidden" name="clientid" value="@ViewBag.ClientId" />
+                            <input type="hidden" name="oid" value="@ViewBag.Oid" />
+                            <input type="hidden" name="okUrl" value="@ViewBag.okURL" />
+                            <input type="hidden" name="failUrl" value="@ViewBag.failURL" />
+                            <input type="hidden" name="islemtipi" value="@ViewBag.TransActionType" />
+                            <input type="hidden" name="rnd" value="@ViewBag.RDN" />
+                            <input type="hidden" name="hash" value="@ViewBag.Hash" />
+                            <input type="hidden" name="storetype" value="@ViewBag.StoreType" />
+                            <input type="hidden" name="refreshtime" value="10" />
+                            <input type="hidden" name="lang" value="@ViewBag.Lang" />
+                            <input type="hidden" name="currency" value="949" />
+                            <input type="hidden" name="amount" value="@ViewBag.Amount" />
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fab fa-cc-visa"></i> &nbsp; <i class="fab fa-cc-amex"></i> &nbsp;
+                                    <i class="fab fa-cc-mastercard"></i>
+                                </span>
+                            </div>
+                        </div> <!-- input-group.// -->
+                    </div> <!-- form-group.// -->
+                    <div class="row">
+                        <div class="col-md flex-grow-0">
+                            <div class="form-group">
+                                <label for="kartisimsoyisim" class="hidden-xs">Son Kullanma Tarihi</label>
+                                <div class="form-inline" style="min-width: 220px">
+                                    <select class="form-control" style="width:100px" name="Ecom_Payment_Card_ExpDate_Month">
+                                        <option value="01">1</option>
+                                        <option value="02">2</option>
+                                        <option value="03">3</option>
+                                        <option value="04">4</option>
+                                        <option value="05">5</option>
+                                        <option value="06">6</option>
+                                        <option value="07">7</option>
+                                        <option value="08">8</option>
+                                        <option value="09">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12" selected="selected">12</option>
+                                    </select>
+                                    <span style="width:20px; text-align: center"> / </span>
+                                    <select class="form-control" style="width:100px" name="Ecom_Payment_Card_ExpDate_Year">
+                                        <option value="21" selected="selected">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card" for="CVC">CVV <i class="fa fa-question-circle"></i></label>
+                                <input autocomplete="off" id="contact-phone" name="cvCode" type="text" value="123" class="form-control" />
+                            </div> <!-- form-group.// -->
+                        </div>
+                    </div> <!-- row.// -->
+                    @*<button class="subscribe btn btn-primary btn-block" type="button"> Confirm  </button>*@
+
+                </div> <!-- card-body.// -->
+            </div> <!-- card .// -->
+            <!-- ============================ COMPONENT FEEDBACK END.// ================================= -->
+            <article class="card mb-4">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Sepetteki Ürünler</h4>
+                    <div class="row">
+                        @foreach (var item in sepeturunler)
+                        {
+                            <div class="col-md-6">
+                                <figure class="itemside  mb-4">
+                                    <div class="aside"><img src="~/İmage/@(item.Urunler.UrunID).jpg" class="border img-sm"></div>
+                                    <figcaption class="info">
+                                        <p>@item.Urunler.UrunAdı</p>
+                                        <span class="text-muted">@item.Adet x = @item.ToplamTutar.ToString("0,0.")TL </span>
+                                    </figcaption>
+                                </figure>
+                            </div> <!-- col.// -->
+                        }
+
+                    </div> <!-- row.// -->
+                </div> <!-- card-body.// -->
+            </article> <!-- card.// -->
+
+        </main> <!-- col.// -->
+        <aside class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="mb-3">Genel Bakış</h4>
+                    <dl class="dlist-align">
+                        <dt class="text-muted">Kargo Türü:</dt>
+                        <dd>Standart</dd>
+                    </dl>
+                    <dl class="dlist-align">
+                        <dt class="text-muted">Ödeme Türü:</dt>
+                        <dd>Kredi Kartı</dd>
+                    </dl>
+                    <hr>
+                    <dl class="dlist-align">
+                        <dt>Toplam:</dt>
+                        <dd class="h5">@ViewBag.Amount TL
+                        <dd>
+                    </dl>
+                    <hr>
+                    <p class="small mb-3 text-muted">Tıklayarak koşul şartlarını kabul etmiş olursunuz.</p>
+                    <input type="submit" value="Ödemeyi Tamamla" class="btn btn-primary btn-block" />
+
+                </div> <!-- card-body.// -->
+            </div> <!-- card.// -->
+        </aside> <!-- col.// -->
+
+    </div> <!-- row.// -->
 </form>

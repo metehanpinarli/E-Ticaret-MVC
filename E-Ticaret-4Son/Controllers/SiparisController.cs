@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace E_Ticaret_4Son.Controllers
 {
+    [Authorize]
     public class SiparisController : Controller
     {
         private E_TicaretDBEntities db = new E_TicaretDBEntities();
@@ -25,13 +26,17 @@ namespace E_Ticaret_4Son.Controllers
         {
             return View(db.SiparisKalem.Where(a=>a.RefSiparisID==id).ToList());
         }
+        public ActionResult test()
+        {
+            return View();
+        }
 
         public ActionResult SiparisTamamla()
         {
             string userID = User.Identity.GetUserId();
             List<Sepet> sepetUrunleri = db.Sepet.Where(a => a.RefAspNetUserID == userID).ToList();
             string ClientId = "100300000";
-            string Amount = sepetUrunleri.Sum(t => t.ToplamTutar).ToString();
+            string Amount = sepetUrunleri.Sum(t => t.ToplamTutar).ToString("0,0.");
             string Oid = String.Format("{0:yyyyMMddHHmmss}", DateTime.Now);
             string OnayURL = "https://localhost:44367/Siparis/Tamamlandi";
             string HataURL = "https://localhost:44367/Siparis/Hatali";
@@ -44,6 +49,7 @@ namespace E_Ticaret_4Son.Controllers
             byte[] HashBytes = System.Text.Encoding.GetEncoding("ISO-8859-9").GetBytes(HashStr);
             byte[] InputBytes = sha.ComputeHash(HashBytes);
             string Hash = Convert.ToBase64String(InputBytes);
+            ViewBag.sepeturunler = sepetUrunleri;
             ViewBag.ClientId = ClientId;
             ViewBag.Oid = Oid;
             ViewBag.okUrl = OnayURL;

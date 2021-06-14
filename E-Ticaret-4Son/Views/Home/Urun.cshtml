@@ -69,25 +69,25 @@
                                 <div class="input-group-prepend">
                                     <button class="btn btn-light" type="button" id="button-plus" onclick="arttir()"> + </button>
                                 </div>
-                                <input type="text" name="adet" id="adet" maxlength="3" class="form-control" value="1">
-                                <input type="hidden" value="@Model.UrunID" name="id" id="id" />
-                                <div class="input-group-append">
-                                    <button class="btn btn-light" type="button" id="button-minus" onclick="azalt()"> &minus; </button>
-                                </div>
-                                <script>
-                                    function arttir() {
+                                    <input type="text" name="adet" id="adet" maxlength="3" class="form-control" value="1">
+                                    <input type="hidden" value="@Model.UrunID" name="id" id="id" />
+                                    <div class="input-group-append">
+                                        <button class="btn btn-light" type="button" id="button-minus" onclick="azalt()"> &minus; </button>
+                                    </div>
+                                    <script>
+                                        function arttir() {
 
-                                        var adet = document.getElementById("adet");
-                                        adet.value = Number(adet.value) + 1;
-                                    }
+                                            var adet = document.getElementById("adet");
+                                            adet.value = Number(adet.value) + 1;
+                                        }
 
-                                    function azalt() {
+                                        function azalt() {
 
-                                        var adet = document.getElementById("adet");
-                                        adet.value = Number(adet.value) - 1;
-                                        adet.onc
-                                    }
-                                </script>
+                                            var adet = document.getElementById("adet");
+                                            adet.value = Number(adet.value) - 1;
+                                            adet.onc
+                                        }
+                                    </script>
                             </div>
                         </div> <!-- col.// -->
                         <!--<div class="form-group col-md">
@@ -114,8 +114,6 @@
                     </div> <!-- row.// -->
                     <a href="#" class="btn  btn-primary">Şimdi satın al</a>
                     <button id="gonder"class="btn  btn-outline-primary"> <span class="text">Sepete Ekle</span><i class="fas fa-shopping-cart"></i></button>
-
-                    @*class="btn  btn-outline-primary"> <span class="text">Sepete ekle</span> <i class="fas fa-shopping-cart"></i>  </a>*@
                 </form>
             </article> <!-- product-info-aside .// -->
 

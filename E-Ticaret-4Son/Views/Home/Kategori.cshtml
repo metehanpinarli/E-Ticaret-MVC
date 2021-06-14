@@ -240,13 +240,18 @@
                                             @*<del class="price-old">$1980</del>*@
                                         </div> <!-- price-wrap.// -->
                                     </div>
-                                    <a href="#" class="btn btn-block btn-primary">Sepete Ekle</a>
+                                    <form action="~/Sepets/SepeteEkle">
+                                        <input type="hidden" name="adet" id="adet" maxlength="3" class="form-control" value="1">
+                                        <input type="hidden" value="@item.UrunID" name="id" id="id" />
+                                        <button class="btn btn-block btn-primary" id="gonder">Sepete Ekle</button>
+
+                                    </form>
                                 </figcaption>
                             </figure>
                         </div> <!-- col.// -->
 
-                        }
-                    </div> <!-- row end.// -->
+                    }
+                </div> <!-- row end.// -->
 
 
                 <nav class="mt-4" aria-label="Page navigation sample">
